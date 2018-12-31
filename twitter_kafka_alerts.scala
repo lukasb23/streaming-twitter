@@ -89,8 +89,8 @@ val windowed_alerts = tweets.
     count().
     select("window.start", "city", "count").
     filter(($"count" >= threshold_paris && $"city" === "Paris") ||
-           ($"count" >= threshold_rome && $"city" === "Rome") ||
-           ($"count" >= threshold_rest && remaining_cities.contains($"city")))
+           ($"count" >= threshold_rome && $"city" === "Rome") || 
+           ($"count" >= threshold_rest && $"city" =!= "Rome" && $"city" =!= "Paris"))
 
 // COMMAND ----------
 
